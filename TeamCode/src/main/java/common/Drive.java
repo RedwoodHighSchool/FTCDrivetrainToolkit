@@ -465,7 +465,7 @@ public class Drive extends Thread {
             angle = 360 - angle;
         else if (angle < -180)
             angle = angle + 360;
-        double traveled =  (double) (Math.abs(position - lastPosition)) / encoderTicksPerInch();;
+        double traveled =  (double) (Math.abs(position - lastPosition)) / encoderTicksPerInch();
         double drift = traveled * Math.sin(Math.toRadians(angle));
         lastPosition = position;
         totalDrift += drift;
@@ -474,8 +474,8 @@ public class Drive extends Thread {
 
 
         // Use PID with drift input to drive in a straight line.
-        double correction = pidDrive.performPID(totalDrift);
-        //double speedCorrection = (speed * correction) / 100;
+//        double correction = pidDrive.performPID(totalDrift);
+//        double speedCorrection = (speed * correction) / 100;
         double PID_MAX_OUTPUT = 0.03;
         double PID_MIN_OUTPUT = -PID_MAX_OUTPUT;
         double speedCorrection = speed * Math.max(Math.min((totalDrift*PID_DRIVE_KP), PID_MAX_OUTPUT), PID_MIN_OUTPUT);
