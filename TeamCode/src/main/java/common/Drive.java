@@ -123,8 +123,8 @@ public class Drive extends Thread {
         pidDrive = new PIDController(PID_DRIVE_KP, PID_DRIVE_KI, PID_DRIVE_KD);
 
         try {
-            //gyro = new Gyro(opMode.hardwareMap, "imu");
-            gyro = new Gyro(opMode.hardwareMap, "imuExpansion",
+//            gyro = new Gyro(opMode.hardwareMap, "imu");
+            gyro = new Gyro(opMode.hardwareMap, Config.IMU,
                     RevHubOrientationOnRobot.LogoFacingDirection.DOWN, RevHubOrientationOnRobot.UsbFacingDirection.FORWARD);
         } catch (Exception e) {
             Logger.error(e, "Hardware not found");
